@@ -1,0 +1,15 @@
+import re
+
+FILE_NAME = '/home/tylergrimm2019/project3/url_copy.log'
+
+
+for line in open(FILE_NAME):
+	ERRORS = []
+	parts = []
+	regex = re.compile(".*\[([^:]*):(.*) \-[0-9]{4}\] \"([A-Z]+) (.+?)( HTTP.*\"|\") ([2-5]0[0-9]) .*")
+	parts.append( regex.split(line))
+	print parts
+
+if not parts or len(parts)<7:
+	print( "Error parsing line! log entry added to ERRORS[] list. . .")
+	ERRORS.append(line)
